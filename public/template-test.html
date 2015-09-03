@@ -1,0 +1,17 @@
+<html>
+<head>
+	<title>Angular template</title>
+	<link rel="stylesheet" type="text/css" href="/css/templateCSS.css">
+</head>
+<body ng-app="templateTest">
+	<h1>LETS GET DOWN TO BUSINESS</h1>
+
+	<li ng-repeat="dank in [0,1,2,3,4,5,6,7,8,9]" ng-if="dank % 3">{{dank}}</li> <br>
+	<ul ng-repeat="letter in ['A', 'b', 'C', 'd', 'E', 'F']">{{ letter | lowercase}}</ul>
+
+	<img ng-repeat="i in [1,2,3]" ng-src="/img/food{{ i }}.jpg" alt="NF">
+
+	<script type="text/javascript" src="/js/angular.min.js"></script>
+	<script type="text/javascript" src="/js/templateTest.js"></script>
+</body>
+</html>
