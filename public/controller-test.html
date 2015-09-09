@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title>Controlling</title>
+	<link rel="stylesheet" type="text/css" href="/css/cart.css">
+	<link rel="stylesheet" type="text/css" href="/js/jquery.js">
+	<script type="text/javascript" src="/js/angular.min.js"></script>
+	<script type="text/javascript" src="/js/controllerTest.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body ng-app="controllerTest">
+	<div ng-controller="CartController as CC">
+		<form novalidate name="addItem">
+			<label for="itemName">Item Name</label>
+			<input type="text" id="itemName focusedInput" ng-model="CC.newItem.name" maxlength="200" required><br>
+
+			<label for="itemPrice">Item price</label>
+			<input type="number" id="itemPrice focusedInput" ng-model="CC.newItem.price" maxlength="25" required><br>
+
+			<label for="itemQuanity">Quanity</label>
+			<input type="number" id="itemQuanity focusedInput" ng-model="CC.newItem.quanity" maxlength="5" required>
+			<button ng-disabled="addItem.$invalid" ng-click="CC.addItem(); CC.cartTotal();">Add to cart</button>
+		</form>
+			
+		<table>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Quanity</th>
+			<th>Item total</th>
+			<span>
+				<tr ng-repeat="item in CC.itemsArray">
+					<td>{{item.name}}</td>
+					<td>${{item.price}}</td>
+					<td>{{item.quanity}}</td>
+					<td>${{item.quanity * item.price}}</td>
+				</tr>
+			</span>
+		</table>
+		<div>Tax: {{CC.getTax() | currency}}</div>
+ 		<div>Grand total: {{CC.grandTotal | currency}}<div>	
+	</div>
+</body>
+</html>

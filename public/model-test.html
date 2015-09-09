@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title>Model test</title>
+	<link rel="stylesheet" type="text/css" href="/css/templateCSS.css">
+</head>
+<body ng-app="modelTest">
+	<form novalidate name="infoForm">
+	    <label for="first_name">First Name</label>
+	    <input type="text" id="first_name" ng-model="user.firstName" maxlength="50" required>
+
+	    <label for="last_name">Last Name</label>
+	    <input type="text" id="last_name"  ng-model="user.lastName" maxlength="100" required>
+
+	    <label for="email">Email</label>
+	    <input type="email" id="email" ng-model="user.email" required>
+
+	    <label for="birthday">Birthday (MM/DD/YYYY)</label>
+	    <input type="date" id="birthday" ng-model="user.birthday" minlength="8" required>
+
+	    <label for="github">Github link</label>
+	    <input type="text" id="github"  ng-model="user.github" maxlength="40" required>
+
+	    <label for="imageIcon">Image</label>
+	</form>
+
+	<div ng-if="infoForm.$valid" class="businessCard">
+		<span class=".">{{user.firstName}} </span> <br>
+		<span class=".">{{user.lastName}} </span> <br>
+		<span class=".">{{user.email}} </span> <br>
+		<span class=".">{{user.birthday | date: format: longDate}} </span> <br>
+		<a class="." href="http://github.com/{{user.github}}">{{user.github}} </a> <br>
+		<img src="" ng-src="{{ user.imageIcon }}">
+	</div>
+
+<script type="text/javascript" src="/js/angular.min.js"></script>
+<script type="text/javascript" src="/js/modelTest.js"></script>
+</body>
+</html>
